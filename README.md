@@ -1,5 +1,9 @@
 <include a CircleCI status badge, here>
 
+### CircleCi Status badge
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/lukhee/project-ml-microservice-kubernetes/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/lukhee/project-ml-microservice-kubernetes/tree/main)
+
+
 ## Project Overview
 
 In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
@@ -49,6 +53,3 @@ source .devops/bin/activate
 * Create Flask app in Container
 * Run via kubectl
 
-
-### CircleCi Status badge
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/lukhee/project-ml-microservice-kubernetes/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/lukhee/project-ml-microservice-kubernetes/tree/main)
