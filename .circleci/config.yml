@@ -8,22 +8,31 @@ jobs:
       working_directory: ~/repo
       steps:
         - checkout
+
+        - restore_cache:
+            keys:
+              - v1-dependencies-{{ checksum "requirements.txt" }}
+              # fallback to using the latest cache if no exact match is found
+              - v1-dependencies-
         - run:
             name: install dependencies
             command: |
               python3 -m venv venv
               . venv/bin/activate
               make install
-              sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
-              sudo chmod +x /bin/hadolint
               
         
         # Installation for linting dockerfile
-        # - run:
-        #     name: install Hadolint
-        #     command: |
-        #       sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
-        #       sudo chmod +x /bin/hadolint
+        - run:
+            name: install Hadolint
+            command: |
+              sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
+              sudo chmod +x /bin/hadolint
+
+        - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
               
         - run:
             name: run test/lint
