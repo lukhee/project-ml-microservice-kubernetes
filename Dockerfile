@@ -15,7 +15,7 @@ COPY . app.py /app/
 #  pip install --no-cache-dir -r requirements.txt
 
 # hadolint ignore=DL3013
-RUNpip install --no-cache-dir --upgrade pip &&\
+RUN pip install --no-cache-dir --upgrade pip &&\
     pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
 
 ## Step 4:
